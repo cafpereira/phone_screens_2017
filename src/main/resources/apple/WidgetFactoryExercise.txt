@@ -1,0 +1,58 @@
+//
+// This is a description of a small system. The coding exercise is to model the components and processes in this system
+// in an object oriented way and be able to run a simulation of the process.
+//
+// A widget Factory consists of three departments - Assembly, QC and Shipping.
+// The factory is managed by a Factory Manager.
+// The Factory makes and ships three kinds of widgets: Indigo, Tan and Mauve.
+// Indigo and Tan support function shake.
+// Tan and Mauve support function drag.
+// Both shake and drag functions return 0 if the widget is in working condition, and -1 if the widget is defective.
+// Historically, a certain percentage of Indigo, Tan and Mauve widgets are defective.
+//
+// Assembly department makes the widgets in independent assembly lines for each widget.
+// After each widget is made, Assembly sends it to QC and sends a notification to Factory Manager.
+//
+// QC department doesn't know about Indigo, Tan or Mauve.
+// They only know about widgets that can be shaken or dragged.
+// QC tests every widget, and if a widget is not defective, it is sent to Shipping and QC notifies Factory Manager.
+//
+// When a widget is received by Shipping department a notification of the type of widget received is sent to Factory Manager.
+//
+// Model the the factory (and the departments), the Factory Manager, widget types and functions, and the inter-department processes.
+//
+// Run a simulation of the factory for:
+// 1. a configurable number of seconds (see test case)
+// 2. a configurable production rate per second for each kind of widget, and
+// 3. a configurable defect rate for each kind of widget
+//
+// At the end of the simulation, the test will verify that the number of widgets assembled (given the rate) = number of defective widgets + number of shipped widgets.
+//
+// */
+public class Solution {
+
+    @Test
+    public void simulation() throws Exception {
+        double indigoErrorRate = 0.02;
+        double tanErrorRate = 0.01;
+        double mauveErrorRate = 0.05;
+        int indigoProductionRate = 10;
+        int tanProductionRate = 5;
+        int mauveProductionRate = 1;
+        int simulationDurationInSeconds = 2;
+
+        final Factory factory = new Factory(indigoProductionRate, tanProductionRate, mauveProductionRate, indigoErrorRate, tanErrorRate, mauveErrorRate);
+        factory.run(simulationDurationInSeconds);
+
+        final List<Class<Widget>> widgetTypes = getWidgetTypes();
+        Assert.assertTrue(!widgetTypes.isEmpty());
+        widgetTypes.stream().forEach(widgetType -> {
+            Assert.assertEquals(factory.shipped(widgetType).intValue(), factory.assembled(widgetType).intValue() - factory.defective(widgetType).intValue());
+        });
+        Assert.assertEquals(new Integer((indigoProductionRate + tanProductionRate + mauveProductionRate) * simulationDurationInSeconds), widgetTypes.stream().map(c -> factory.assembled(c).intValue()).reduce(0, (x,y) -> x+y));
+    }
+
+    public static void main(String[] args) throws Exception {
+        JUnitCore.main("Solution");
+    }
+}
