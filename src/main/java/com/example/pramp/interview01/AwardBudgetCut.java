@@ -1,4 +1,4 @@
-package com.example.interview01;
+package com.example.pramp.interview01;
 
 import java.io.*;
 import java.util.*;

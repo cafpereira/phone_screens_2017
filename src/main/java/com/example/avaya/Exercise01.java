@@ -1,4 +1,4 @@
-package com.example;
+package com.example.avaya;
 
 // you can also use imports, for example:
  import java.time.*;

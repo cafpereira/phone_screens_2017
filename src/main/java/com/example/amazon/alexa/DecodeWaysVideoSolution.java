@@ -1,3 +1,5 @@
+package com.example.amazon.alexa;
+
 /**
  Count number of encodings of a digit string.
  link: https://www.youtube.com/watch?v=aCKyFYF9_Bg&t=309s

@@ -1,3 +1,5 @@
+package com.example.apple;
+
 // This is a description of a small system. The coding exercise is to model the components and processes in this system
 // in an object oriented way and be able to run a simulation of the process.
 //
@@ -29,9 +31,9 @@
 //
 // */
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.JUnitCore;
+//import org.junit.Assert;
+//import org.junit.Test;
+//import org.junit.runner.JUnitCore;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -254,31 +256,31 @@ class Mauve extends Widget implements Draggable {
     }
 }
 
-public class Solution {
+class Solution {
 
-    @Test
-    public void simulation() throws Exception {
-        double indigoErrorRate = 0.02;
-        double tanErrorRate = 0.01;
-        double mauveErrorRate = 0.05;
-        int indigoProductionRate = 10;
-        int tanProductionRate = 5;
-        int mauveProductionRate = 1;
-        int simulationDurationInSeconds = 2;
-
-        final Factory factory = new Factory(indigoProductionRate, tanProductionRate, mauveProductionRate, indigoErrorRate, tanErrorRate, mauveErrorRate);
-        factory.run(simulationDurationInSeconds);
-
-        final List<Class<? extends Widget>> widgetTypes = getWidgetTypes();
-        Assert.assertTrue(!widgetTypes.isEmpty());
-        widgetTypes.stream().forEach(widgetType -> {
-            Assert.assertEquals(factory.shipped(widgetType), factory.assembled(widgetType) - factory.defective(widgetType));
-        });
-        Assert.assertEquals(new Integer((indigoProductionRate + tanProductionRate + mauveProductionRate) * simulationDurationInSeconds), widgetTypes.stream().map(c -> factory.assembled(c)).reduce(0, (x,y) -> x+y));
-    }
+//    @Test
+//    public void simulation() throws Exception {
+//        double indigoErrorRate = 0.02;
+//        double tanErrorRate = 0.01;
+//        double mauveErrorRate = 0.05;
+//        int indigoProductionRate = 10;
+//        int tanProductionRate = 5;
+//        int mauveProductionRate = 1;
+//        int simulationDurationInSeconds = 2;
+//
+//        final Factory factory = new Factory(indigoProductionRate, tanProductionRate, mauveProductionRate, indigoErrorRate, tanErrorRate, mauveErrorRate);
+//        factory.run(simulationDurationInSeconds);
+//
+//        final List<Class<? extends Widget>> widgetTypes = getWidgetTypes();
+//        Assert.assertTrue(!widgetTypes.isEmpty());
+//        widgetTypes.stream().forEach(widgetType -> {
+//            Assert.assertEquals(factory.shipped(widgetType), factory.assembled(widgetType) - factory.defective(widgetType));
+//        });
+//        Assert.assertEquals(new Integer((indigoProductionRate + tanProductionRate + mauveProductionRate) * simulationDurationInSeconds), widgetTypes.stream().map(c -> factory.assembled(c)).reduce(0, (x,y) -> x+y));
+//    }
 
     public static void main(String[] args) throws Exception {
-        JUnitCore.main("Solution");
+//        JUnitCore.main("Solution");
     }
 
     public List<Class<? extends Widget>> getWidgetTypes() {

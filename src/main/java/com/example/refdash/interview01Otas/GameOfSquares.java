@@ -1,4 +1,4 @@
-package com.example.interview01Otas;
+package com.example.refdash.interview01Otas;
 
 /**
  * Game of squares

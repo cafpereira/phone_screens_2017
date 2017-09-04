@@ -1,4 +1,4 @@
-package com.example;
+package com.example.avaya;
 
 class Solution03 {
     public static void main(String[] args) {
