@@ -28,7 +28,32 @@ class Solution01
                            List<String> shoppingCart)
     {
         // WRITE YOUR CODE HERE
-        return 0;
+        return checkWinner(codeList, shoppingCart, 0, 0) ? 1 : 0;
     }
     // METHOD SIGNATURE ENDS
+
+    public boolean checkWinner(List<List<String>> codeList, List<String> shoppingCart,
+                           int codeIdx, int cartIdx) {
+        List<String> pattern = codeList.get(codeIdx);
+        for (int i = cartIdx; i < shoppingCart.size(); i++) {
+            String q = shoppingCart.get(i);
+            if (q.equals(pattern.get(0))) {
+                int lastMatch = matchPattern(shoppingCart, pattern, i);
+                if (lastMatch > -1 && checkWinner(codeList, shoppingCart, codeIdx + 1, lastMatch)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public int matchPattern(List<String> query, List<String> pattern, int cartIdx) {
+        int curPatternIdx = 0;
+        while (curPatternIdx < pattern.size() && cartIdx < query.size() &&
+                (query.get(cartIdx).equals(pattern.get(curPatternIdx)) || (pattern.get(curPatternIdx).equals("anything")))){
+            cartIdx++;
+            curPatternIdx++;
+        }
+        return curPatternIdx == pattern.size() ? cartIdx : -1;
+    }
 }
