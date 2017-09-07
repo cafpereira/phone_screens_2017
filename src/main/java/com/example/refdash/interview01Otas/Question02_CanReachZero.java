@@ -2,7 +2,7 @@ package com.example.refdash.interview01Otas;
 
 import java.util.Set;
 
-public class CanReachZero {
+class CanReachZero {
     boolean canReachZero(int[] arr, int startIndex, Set<Integer> visited) {
         int jumpLen = arr[startIndex];
         if (jumpLen == 0) {

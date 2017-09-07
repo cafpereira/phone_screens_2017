@@ -6,5 +6,5 @@ package com.example.refdash.interview01Otas;
  * Turn: Subtracting a perfect square from the current state
  * State: Always a non-negative integer
  */
-public class GameOfSquares {
+class GameOfSquares {
 }

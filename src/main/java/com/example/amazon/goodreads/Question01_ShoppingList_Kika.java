@@ -20,7 +20,7 @@ package com.example.amazon.goodreads;
 // DEFINE ANY CLASS AND METHOD NEEDED
 import java.util.List;
 // CLASS BEGINS, THIS CLASS IS REQUIRED
-class Solution {
+class Solution01_Kika {
 
     // METHOD SIGNATURE BEGINS, THIS METHOD IS REQUIRED
     public int checkWinner(List<List<String>> codeList,
