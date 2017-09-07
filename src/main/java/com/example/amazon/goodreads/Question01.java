@@ -18,6 +18,7 @@ package com.example.amazon.goodreads;
 // IMPORT LIBRARY PACKAGES NEEDED BY YOUR PROGRAM
 // SOME CLASSES WITHIN A PACKAGE MAY BE RESTRICTED
 // DEFINE ANY CLASS AND METHOD NEEDED
+import java.util.Arrays;
 import java.util.List;
 // CLASS BEGINS, THIS CLASS IS REQUIRED
 
@@ -34,6 +35,10 @@ class Solution01
 
     public boolean checkWinner(List<List<String>> codeList, List<String> shoppingCart,
                            int codeIdx, int cartIdx) {
+        if (codeIdx == codeList.size()) {
+            // All secret codes matched
+            return true;
+        }
         List<String> pattern = codeList.get(codeIdx);
         for (int i = cartIdx; i < shoppingCart.size(); i++) {
             String q = shoppingCart.get(i);
@@ -55,5 +60,24 @@ class Solution01
             curPatternIdx++;
         }
         return curPatternIdx == pattern.size() ? cartIdx : -1;
+    }
+
+    public static void main(String[] args) {
+        Solution01 solution = new Solution01();
+
+        //codelist: [[apple, apple], [banana, anything, banana]]
+        List<List<String>> codeList = Arrays.asList(Arrays.asList("apple", "apple"), Arrays.asList("banana", "anything", "banana"));
+
+        //cart1: orange, apple, apple, banana, orange, banana
+        List<String> cart1 = Arrays.asList("orange", "apple", "apple", "banana", "orange", "banana");
+        System.out.println("checkWinner( cart1 ) = " + solution.checkWinner(codeList, cart1));
+
+        //cart2: apple, apple, orange, orange, banana, apple, banana, banana
+        List<String> cart2 = Arrays.asList("apple", "apple", "orange", "orange", "banana", "apple", "banana", "banana");
+        System.out.println("checkWinner( cart2 ) = " + solution.checkWinner(codeList, cart2));
+
+        //cart3: apple, apple, orange, orange, apple, banana, banana
+        List<String> cart3 = Arrays.asList("apple", "apple", "orange", "orange", "apple", "banana", "banana");
+        System.out.println("checkWinner( cart3 ) = " + solution.checkWinner(codeList, cart3));
     }
 }

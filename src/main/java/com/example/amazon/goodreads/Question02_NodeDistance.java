@@ -37,7 +37,7 @@ class Solution02
     // METHOD SIGNATURE ENDS
     public static void main(String[] args) {
         Solution02 s = new Solution02();
-        s.bstDistance(new int[]{5, 6, 3, 1, 2, 4}, 6, 2, 4);
+        System.out.println("bstDistance(...) = " + s.bstDistance(new int[]{5, 6, 3, 1, 2, 4}, 6, 2, 4));
     }
 }
 
@@ -111,7 +111,7 @@ class BST {
         while (n1 != n2) {
             n1 = n1.parent;
             n2 = n2.parent;
-            distance++;
+            distance += 2;
         }
 
         return distance;
