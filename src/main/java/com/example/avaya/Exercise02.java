@@ -38,12 +38,10 @@ class Solution02 {
     }
 
     private static Integer getFirstEntry(LinkedHashMap<Integer, Integer> lastOccur) {
-        Integer first = null;
-        for (Map.Entry<Integer, Integer> e : lastOccur.entrySet()) {
-            first = e.getValue();
-            break;
-        }
-        return first;
+        return lastOccur.entrySet()
+            .iterator()
+            .next()
+            .getValue();
     }
 
     private static Subarray minSubarray(Subarray s1, Subarray s2) {
