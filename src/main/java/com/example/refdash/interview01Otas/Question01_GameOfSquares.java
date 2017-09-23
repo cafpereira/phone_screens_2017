@@ -5,6 +5,9 @@ package com.example.refdash.interview01Otas;
  * Two players
  * Turn: Subtracting a perfect square from the current state
  * State: Always a non-negative integer
+ *
+ * Refdash training session:
+ *   https://www.youtube.com/watch?v=kKhnYLpME3w
  */
 class GameOfSquares {
 }
