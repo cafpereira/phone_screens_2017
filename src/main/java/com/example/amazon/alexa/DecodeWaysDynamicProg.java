@@ -1,7 +1,6 @@
 package com.example.amazon.alexa;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * If a=1, b=2, c=3,....z=26. Given a string, find all possible codes that string can generate. Give a count as well as print the strings.
@@ -18,51 +17,44 @@ import java.util.Set;
  */
 public class DecodeWaysDynamicProg {
 
-    public static void main(String[] args) {
-        String input = "1123";
-//        System.out.println("Response for " + input + ": " + DP(new int[]{1, 1, 2, 3}, 4));
-//        System.out.println("Response for " + input + ": " + (countDecode(new int[]{1, 1, 2, 3}, 0, 4)) + 1);
-        System.out.println("Response for " + input + ": " + (print(new int[]{1, 1, 2, 3}, 0, 4, "") + 1));
-    }
+    /*
+     * Similar to climbing stairs problem. For instance, if the string is "14",
+     * imagine we have 2 steps labeled ['1', '4'], we can get to the destination
+     * using one step at time (decode '1', then '4') or jumping 2 steps at once
+     * which is the equivalent of decoding the combined string '14'.
+     * The diference is that we need to address a few edge cases where we cannot
+     * use any steps that start with zero, or jump two consective steps if the
+     * combined result code is greater than 26.
+     */
+    public static int decodeWaysDP(String text) {
+        int n = text.length();
+        int[] table = new int[n + 1];
 
-    public static int DP(int[] a, int n) {
-        int[] dp = new int[n + 1];
-        dp[0] = 0;
+        // table[0] means an empty string will have one way to decode
+        table[0] = 1;
+        // table[1] means the way to decode a string of size 1
+        table[1] = text.charAt(0) != '0' ? 1 : 0;
 
-        for (int i = 1; i <= n; i++) {
-            if (i > 1 && a[i - 2] <= 2 && a[i - 1] <= 6) {
-                dp[i] = dp[i - 1] + dp[i - 2] + 1;
-            } else {
-                dp[i] = dp[i - 1];
+        for (int i = 2; i <= n; i++) {
+            int first = Integer.valueOf(text.substring(i-1, i));
+            int second = Integer.valueOf(text.substring(i-2, i));
+
+            if (first >= 1 && first <= 9) {
+                table[i] += table[i - 1];
+            }
+            if (second >= 10 && second <= 26) {
+                table[i] += table[i - 2];
             }
         }
-        return dp[n] + 1; // +1 for base case where all characters are made of single digits
+        return table[n];
     }
 
-    public static int countDecode(int [] a, int i, int n) {
-        if(i == n)  {
-            return 0;
-        }
 
-        int ans = 0;
-        if(i < n-1 && a[i+1] <= 6 && a[i] <= 2) {
-            ans += countDecode(a, i+2, n) + 1;
-        }
-        ans += countDecode(a, i+1, n);
-        return ans;
-    }
-
-    public static int print(int [] a, int i, int n, String s) {
-        if(i == n)  {
-            System.out.println(s);
-            return 0;
-        }
-        int ans = 0;
-        if(i < n-1 && a[i+1] <= 6 && a[i] <= 2) {
-            ans += print(a, i+2, n, new String(s+(char)(a[i]*10+a[i+1]+'a'-1))) +1;
-        }
-        ans += print(a, i+1, n, new String(s+(char)(a[i]+'a'-1)));
-        return ans;
+    public static void main(String[] args) {
+        System.out.println("decodeWaysDP('121') = " + decodeWaysDP("121") + ", Expected: " + 3);
+        System.out.println("decodeWaysDP('12321') = " + decodeWaysDP("12321") + ", Expected: " + 6);
+        System.out.println("decodeWaysDP('1123') = " + decodeWaysDP("1123") + ", Expected: " + 5);
+        System.out.println("decodeWaysDP('9090') = " + decodeWaysDP("9090") + ", Expected: " + 0);
     }
 }
 
