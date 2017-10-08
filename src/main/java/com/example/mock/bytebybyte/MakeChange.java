@@ -11,6 +11,9 @@ public class MakeChange {
     return makeChangeRec(c, 0, new int[]{25,10,1});
   }
 
+  /**
+   * Complexity: O(2^c+k), where k is the number of coin values.
+   */
   public static int makeChangeRec(int c, int i, int[] coins) {
     if (c == 0) {
       return 0;
@@ -27,6 +30,9 @@ public class MakeChange {
 
     return Math.min(withCoin, withoutCoin);
   }
+
+  // TODO #1 implement greed algorigthm (works for US coins)
+  // TODO #2 implement bottom-up dynamic algorithm (works for any coin set)
 
   public static void main(String[] args) {
     System.out.println("makeChange(47) = " + makeChange(47) + " # Expected: " + 5);
