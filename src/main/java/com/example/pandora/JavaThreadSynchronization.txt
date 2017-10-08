@@ -1,0 +1,32 @@
+Q1: Considering the code bellow, what values (if any) can be printed?
+
+int x = 0;
+boolean bExit = false;
+
+Thread 1 (not synchronized)
+x = 1;
+bExit = true;
+
+Thread 2 (not synchronized)
+if (bExit == true)
+   System.out.println("x=" + x);
+
+A: Theoretically Thread 2 can print nothing, 0 or 1. This happens because the java compiler
+can optimize the variable declarations using a different order.
+
+Follow-up: How we can change the program above to always print '1' ?
+
+A: One to do that is to synchrozined the read/write access on bExit and x variables. Another
+solution is to declare bExit using the 'volatile' modifier.
+
+int x = 0;
+volatile boolean bExit = false;
+
+The reason is because reading and writing instructions of volatile variables cannot be reordered by the JVM and
+instructions before and after can be reordered, but the volatile read or write cannot be mixed with these instructions.
+
+Whatever instructions follow a read or write of a volatile variable are guaranteed to happen after the read or write.
+In the example above, even if x is not volatile itself, we will know that x=1 write will 'always' happen before the
+volatile write on bExit.
+
+

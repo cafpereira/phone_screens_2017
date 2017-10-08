@@ -1,6 +1,5 @@
 package com.example.refdash.screencast;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
