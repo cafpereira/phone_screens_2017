@@ -3,6 +3,8 @@ package com.example.mock.bytebybyte;
 import java.util.*;
 
 /**
+ * url: https://discuss.leetcode.com/topic/63516/explained-my-java-solution-using-trie-126ms-16-16
+ *
  * Given a list of W words, where each word has size N,
  * return all possible word squares that can be formed.
  *
