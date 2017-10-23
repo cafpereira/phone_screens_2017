@@ -1,14 +1,18 @@
 package com.example.refdash.interview03Andy;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
- * As a reward for your kindergarten students taking a test, you decide to give them some candy. The kids all wait in a line and await you to give
- * them some candy. The only way the children think this is fair is that if a student has a higher score than a neighboring child, that the student
- * with the higher score gets more candy. How many pieces of candy do you need to give out?
+ url: https://leetcode.com/problems/candy/description
+ There are N children standing in a line. Each child is assigned a rating value.
+ You are giving candies to these children subjected to the following requirements:
+   - Each child must have at least one candy.
+   - Children with a higher rating get more candies than their neighbors.
+ What is the minimum candies you must give?
  */
-public class MinimumCandyLine {
+public class MinimumCandyV2 {
   public int totalCandy(int[] scores, int maxScore) {
 
     int n = scores.length;
