@@ -8,7 +8,8 @@ import java.util.*;
  * to last row. (0,0) -> (m-1,n-1)
  *
  * Follow-up: Return the path. Also, how can we find the shortest path?
- * Answer: Use Djkistra shortest path algorithm
+ * Answer: Use BFS instead of DFS. (or maybe Djkstra?)
+ *         BFS implementation requires queue instead of recursion stack
  */
 public class FindPathMatrix {
 
@@ -26,7 +27,8 @@ public class FindPathMatrix {
     int m = matrix.length;
     int n = matrix[0].length;
 
-    // Base case
+    // Base case:
+    // suggestion move this to a helper function
     if (row < 0 || row >= m || col < 0 || col >= n || visited[row][col] || matrix[row][col] == 0) {
       return false;
     }
