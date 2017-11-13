@@ -1,6 +1,5 @@
-package com.example.pramp.interview01;
+package com.example.mock.pramp.interview01;
 
-import java.io.*;
 import java.util.*;
 
 class Solution01 {

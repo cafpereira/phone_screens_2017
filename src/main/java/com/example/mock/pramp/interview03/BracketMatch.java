@@ -1,4 +1,4 @@
-package com.example.pramp.interview03;
+package com.example.mock.pramp.interview03;
 
 /*
   Bracket Match

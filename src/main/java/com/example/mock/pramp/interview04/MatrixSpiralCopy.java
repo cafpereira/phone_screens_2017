@@ -1,6 +1,5 @@
-package com.example.pramp.interview04;
+package com.example.mock.pramp.interview04;
 
-import java.io.*;
 import java.util.*;
 
 /*

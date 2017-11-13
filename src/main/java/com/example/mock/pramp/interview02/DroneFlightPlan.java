@@ -1,4 +1,4 @@
-package com.example.pramp.interview02;
+package com.example.mock.pramp.interview02;
 
 class Solution {
 
