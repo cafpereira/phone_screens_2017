@@ -9,4 +9,5 @@ Interview #1 (part 2)
 https://github.com/donnemartin/system-design-primer/blob/master/solutions/system_design/twitter/README.md
 
 Interview #2
-- ???
+- Problem: Design a system like Mint
+https://github.com/donnemartin/system-design-primer/tree/master/solutions/system_design/mint
