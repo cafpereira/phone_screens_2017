@@ -1,4 +1,4 @@
-package com.companies.amazon.alexa;
+package com.companies.amazon.alexa.aug2017;
 
 import java.util.HashSet;
 import java.util.Set;
