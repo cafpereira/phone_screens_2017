@@ -17,6 +17,10 @@ import java.util.*;
   4.90 -> fruit, fries
   4.30 -> fruit, fruit
   7.95 -> fruit, plate
+
+
+  Leetcode similar question: https://leetcode.com/problems/combination-sum/
+
  */
 public class OrdersWithExactPrice {
   public static void printOrders(double[] prices, String[] menu, double target) {
